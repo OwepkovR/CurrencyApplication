@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">CurrencyApp</string>
+
+    <string name="stub_content_description">Описание контента</string>
+    
+    <string name="tab_currencies_title">Котировки</string>
+    <string name="tab_favorite_title">Избранные</string>
+    <string name="tab_unknown">Неизвестная вкладка</string>
+
+    <string name="error_subscription_plan">Недоступно в текущем тарифном плане АПИ</string>
+    <string name="unknown_error">При загрузке данных возникла ошибка</string>
+
+    <string-array name="currency_spinner_items">
+        <item></item>
+        <item>USD</item>
+        <item>EUR</item>
+        <item>RUB</item>
+        <item>CNY</item>
+        <item>BYN</item>
+    </string-array>
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="@color/flint"
+    android:layout_margin="2dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/currency_title"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        tools:text="test item text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/currency_value"
+        android:layout_marginEnd="10dp"
+        android:layout_gravity="center_vertical"
+        tools:text="3.93423423"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageButton
+        android:id="@+id/favorite_button"
+        android:background="@color/flint"
+        android:src="@drawable/favorite_unselected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/stub_content_description" />
+
+</LinearLayout>
