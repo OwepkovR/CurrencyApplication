@@ -10,6 +10,13 @@
     <string name="error_subscription_plan">Недоступно в текущем тарифном плане АПИ</string>
     <string name="unknown_error">При загрузке данных возникла ошибка</string>
 
+    <string name="sort_activity_title">Сортировка</string>
+    <string name="sort_activity_clear_sort">Сбросить сортировку</string>
+    <string name="sort_activity_direction_ask">По возрастанию</string>
+    <string name="sort_activity_direction_desc">По убыванию</string>
+    <string name="sort_activity_sort_by_alphabet">По алфавиту</string>
+    <string name="sort_activity_sort_by_currency">По котировке</string>
+
     <string-array name="currency_spinner_items">
         <item></item>
         <item>USD</item>

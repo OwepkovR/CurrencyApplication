@@ -13,7 +13,7 @@ import ru.owepkov.currencyapp.R
 import ru.owepkov.currencyapp.data.models.network.ApiException
 import ru.owepkov.currencyapp.data.models.network.ApiExceptionType
 
-abstract class BaseFragment<out VM: BaseViewModel<*>> : Fragment() {
+abstract class BaseFragment<out VM : BaseViewModel<*>> : Fragment() {
     abstract val viewModel: VM
 
     override fun onAttach(context: Context) {
@@ -37,6 +37,7 @@ abstract class BaseFragment<out VM: BaseViewModel<*>> : Fragment() {
                 ApiExceptionType.SUBSCRIPTION_PLAN_ERROR -> {
                     R.string.error_subscription_plan
                 }
+
                 else -> {
                     R.string.unknown_error
                 }

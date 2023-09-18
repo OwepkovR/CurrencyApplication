@@ -6,5 +6,5 @@ import ru.owepkov.currencyapp.data.models.network.CurrencyResponse
 
 interface CurrencyApi {
     @GET("/latest")
-    suspend fun getLatestForSelectedCurrency(@Query("base") base: String) : CurrencyResponse
+    suspend fun getLatestForSelectedCurrency(@Query("base") base: String): CurrencyResponse
 }

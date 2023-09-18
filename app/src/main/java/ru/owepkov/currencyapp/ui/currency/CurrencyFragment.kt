@@ -1,5 +1,6 @@
 package ru.owepkov.currencyapp.ui.currency
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,33 +8,39 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
-import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.map
 import androidx.recyclerview.widget.LinearLayoutManager
 import ru.owepkov.currencyapp.R
-import ru.owepkov.currencyapp.data.models.network.ApiException
-import ru.owepkov.currencyapp.data.models.network.ApiExceptionType
-import ru.owepkov.currencyapp.ui.base.BaseFragment
 import ru.owepkov.currencyapp.databinding.FragmentCurrencyBinding
+import ru.owepkov.currencyapp.ui.base.BaseFragment
 import ru.owepkov.currencyapp.ui.currency.recycler.CurrencyRecyclerViewAdapter
 import ru.owepkov.currencyapp.ui.sharecurrencyandfavorite.SharedViewModel
+import ru.owepkov.currencyapp.ui.sort.SortActivity
 import javax.inject.Inject
 
-class CurrencyFragment @Inject constructor(
-    private val sharedViewModel: SharedViewModel
-) : BaseFragment<CurrencyViewModel>() {
+class CurrencyFragment @Inject constructor() : BaseFragment<CurrencyViewModel>() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     override val viewModel: CurrencyViewModel by viewModels { viewModelFactory }
+
+    private lateinit var sharedViewModel: SharedViewModel
 
     private lateinit var binding: FragmentCurrencyBinding
 
     private val currencyRecyclerViewAdapter = CurrencyRecyclerViewAdapter {
         viewModel.onFavoriteClick(it, binding.currencySpinner.selectedItem as String)
     }
+
+    private val sortActivityContract =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == Activity.RESULT_OK) {
+                viewModel.sortData()
+            }
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,6 +49,8 @@ class CurrencyFragment @Inject constructor(
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = FragmentCurrencyBinding.inflate(inflater, container, false)
+
+        sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
 
         initSpinner()
         initSortButton()
@@ -84,7 +93,7 @@ class CurrencyFragment @Inject constructor(
 
     private fun initSortButton() {
         binding.sortButton.setOnClickListener {
-            //viewModel.testUseCase()
+            sortActivityContract.launch(SortActivity.newIntent(requireActivity()))
         }
     }
 
@@ -107,4 +116,12 @@ class CurrencyFragment @Inject constructor(
             }
         }
     }
+
+    /*companion object {
+        fun create(sharedViewModel: SharedViewModel) : CurrencyFragment {
+            return CurrencyFragment().apply {
+                this.sharedViewModel = sharedViewModel
+            }
+        }
+    }*/
 }
