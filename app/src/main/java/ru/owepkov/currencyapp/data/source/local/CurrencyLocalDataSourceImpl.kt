@@ -1,7 +1,6 @@
 package ru.owepkov.currencyapp.data.source.local
 
 import ru.owepkov.currencyapp.data.models.local.FavoriteCurrencyEntity
-import ru.owepkov.currencyapp.data.models.ui.CurrencyListItem
 import ru.owepkov.currencyapp.data.repository.local.LocalDatabase
 import ru.owepkov.currencyapp.data.source.CurrencyLocalDataSource
 import javax.inject.Inject

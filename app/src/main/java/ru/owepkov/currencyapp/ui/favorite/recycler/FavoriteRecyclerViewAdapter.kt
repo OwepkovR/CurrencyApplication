@@ -10,7 +10,7 @@ import ru.owepkov.currencyapp.data.models.ui.FavoriteListItem
 import ru.owepkov.currencyapp.databinding.FavoriteRecyclerItemBinding
 
 class FavoriteRecyclerViewAdapter(
-    private val removeFavorite : (item: FavoriteListItem) -> Unit
+    private val removeFavorite: (item: FavoriteListItem) -> Unit
 ) : ListAdapter<FavoriteListItem, FavoriteRecyclerViewAdapter.FavoriteViewHolder>(DiffUtilCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
         return FavoriteViewHolder(

@@ -12,7 +12,13 @@ class SetFavoriteCurrencyUseCase @Inject constructor(
         baseCurrency: String
     ): Result<CurrencyListItem> {
         val result =
-            repository.setFavoriteCurrency(item.localId, item.isFavorite, item.title, baseCurrency, item.currency)
+            repository.setFavoriteCurrency(
+                item.localId,
+                item.isFavorite,
+                item.title,
+                baseCurrency,
+                item.currency
+            )
 
         return if (result.isSuccess) {
             val resultItem = result.getOrNull()

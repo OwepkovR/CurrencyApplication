@@ -8,17 +8,17 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.map
 import androidx.recyclerview.widget.LinearLayoutManager
-import ru.owepkov.currencyapp.ui.base.BaseFragment
 import ru.owepkov.currencyapp.databinding.FragmentFavoriteBinding
+import ru.owepkov.currencyapp.ui.base.BaseFragment
 import ru.owepkov.currencyapp.ui.favorite.recycler.FavoriteRecyclerViewAdapter
 import ru.owepkov.currencyapp.ui.sharecurrencyandfavorite.SharedViewModel
 import javax.inject.Inject
 
-class FavoriteFragment @Inject constructor(
-    private val sharedViewModel: SharedViewModel
-) : BaseFragment<FavoriteViewModel>() {
+class FavoriteFragment @Inject constructor() : BaseFragment<FavoriteViewModel>() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private lateinit var sharedViewModel: SharedViewModel
 
     override val viewModel: FavoriteViewModel by viewModels { viewModelFactory }
 
@@ -35,6 +35,8 @@ class FavoriteFragment @Inject constructor(
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFavoriteBinding.inflate(inflater, container, false)
+
+        sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
 
         initRecyclerView()
         initListeners()
@@ -63,4 +65,12 @@ class FavoriteFragment @Inject constructor(
             }
         }
     }
+
+    /*companion object {
+        fun create(sharedViewModel: SharedViewModel): FavoriteFragment {
+            return FavoriteFragment().apply {
+                this.sharedViewModel = sharedViewModel
+            }
+        }
+    }*/
 }

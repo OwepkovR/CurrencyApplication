@@ -2,11 +2,9 @@ package ru.owepkov.currencyapp.data.repository.network
 
 import ru.owepkov.currencyapp.data.models.local.FavoriteCurrencyEntity
 import ru.owepkov.currencyapp.data.models.ui.CurrencyListItem
-import ru.owepkov.currencyapp.data.models.ui.FavoriteListItem
 import ru.owepkov.currencyapp.data.repository.CurrencyRepository
 import ru.owepkov.currencyapp.data.source.CurrencyLocalDataSource
 import ru.owepkov.currencyapp.data.source.CurrencyNetworkDataSource
-import java.lang.Exception
 import javax.inject.Inject
 
 class CurrencyRepositoryImpl @Inject constructor(
@@ -60,7 +58,13 @@ class CurrencyRepositoryImpl @Inject constructor(
                 localDataSource.removeFavorite(localId)
                 Result.success(null)
             } else {
-                Result.success(localDataSource.insertFavorite(baseCurrency, secondaryCurrency, amount))
+                Result.success(
+                    localDataSource.insertFavorite(
+                        baseCurrency,
+                        secondaryCurrency,
+                        amount
+                    )
+                )
             }
         } catch (exception: Throwable) {
             Result.failure(exception)
