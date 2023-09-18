@@ -8,5 +8,5 @@ import ru.owepkov.currencyapp.App
 @Module
 abstract class AppModule {
     @Binds
-    abstract fun bindAppContext(app: App) : Context
+    abstract fun bindAppContext(app: App): Context
 }

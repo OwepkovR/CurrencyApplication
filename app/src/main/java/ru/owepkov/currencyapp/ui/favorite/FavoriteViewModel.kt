@@ -3,11 +3,11 @@ package ru.owepkov.currencyapp.ui.favorite
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
-import ru.owepkov.currencyapp.ui.base.BaseViewModel
 import ru.owepkov.currencyapp.CoroutineContextProvider
 import ru.owepkov.currencyapp.data.models.ui.FavoriteListItem
 import ru.owepkov.currencyapp.domain.usecase.GetFavoriteListUseCase
 import ru.owepkov.currencyapp.domain.usecase.RemoveFavoriteItemUseCase
+import ru.owepkov.currencyapp.ui.base.BaseViewModel
 import javax.inject.Inject
 
 class FavoriteViewModel @Inject constructor(
@@ -72,9 +72,9 @@ class FavoriteViewModel @Inject constructor(
     }
 
     private fun showError(throwable: Throwable) {
-       state =
-           state.copy(isLoading = false, error = throwable, favoriteItems = emptyList()).apply {
-               postStateValue()
-           }
-   }
+        state =
+            state.copy(isLoading = false, error = throwable, favoriteItems = emptyList()).apply {
+                postStateValue()
+            }
+    }
 }
